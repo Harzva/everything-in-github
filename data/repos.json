@@ -3,7 +3,7 @@
     "title": "Everything in GitHub",
     "description": "GitHub 资源综合收集仓库",
     "version": "1.0.0",
-    "updated": "2025-05-09",
+    "updated": "2026-05-09",
     "totalRepos": 70,
     "totalStars": "200k+"
   },
@@ -402,16 +402,16 @@
       "url": "https://github.com/OtacilioN/awesome-hacktoberfest"
     },
     {
-      "name": "Hacktoberfest2025",
+      "name": "Hacktoberfest2026",
       "owner": "avinash201199",
-      "fullName": "avinash201199/Hacktoberfest2025",
+      "fullName": "avinash201199/Hacktoberfest2026",
       "stars": "50",
       "starsNum": 50,
       "category": "community",
       "subcategory": "Hacktoberfest",
-      "description": "2025 年 Hacktoberfest 参与指南",
+      "description": "2026 年 Hacktoberfest 参与指南",
       "language": "HTML",
-      "url": "https://github.com/avinash201199/Hacktoberfest2025"
+      "url": "https://github.com/avinash201199/Hacktoberfest2026"
     },
     {
       "name": "github-trending-archive",

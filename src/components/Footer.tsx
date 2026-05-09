@@ -114,7 +114,7 @@ export default function Footer() {
               </div>
               <div className="flex justify-between text-sm">
                 <span style={{ color: 'var(--text-secondary)' }}>最后更新</span>
-                <span style={{ color: 'var(--text-tertiary)' }}>2025-01</span>
+                <span style={{ color: 'var(--text-tertiary)' }}>2026-01</span>
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function Footer() {
           className="mt-12 flex flex-col items-center justify-between gap-2 border-t pt-6 text-center text-xs sm:flex-row sm:text-left"
           style={{ borderColor: 'rgba(255,255,255,0.06)', color: 'var(--text-tertiary)' }}
         >
-          <span>2025 Everything in GitHub</span>
+          <span>2026 Everything in GitHub</span>
           <span>
             Made with <span style={{ color: 'var(--accent-rose)' }}>&hearts;</span> for the GitHub community
           </span>

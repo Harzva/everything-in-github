@@ -93,7 +93,7 @@ const mockTrending = [
 
 const hacktoberfestRepos = [
   { name: 'OtacilioN/awesome-hacktoberfest', stars: 864 },
-  { name: 'avinash201199/Hacktoberfest2025', stars: 342 },
+  { name: 'avinash201199/Hacktoberfest2026', stars: 342 },
   { name: 'avinash201199/Awesome-GitHub-Repositories', stars: 513 },
 ];
 

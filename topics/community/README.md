@@ -9,7 +9,7 @@
 | 资源 | Stars | 说明 |
 |------|-------|------|
 | [awesome-hacktoberfest](https://github.com/OtacilioN/awesome-hacktoberfest) | 864 | 最全面的 Hacktoberfest 资源集合 |
-| [Hacktoberfest2025](https://github.com/avinash201199/Hacktoberfest2025) | 50 | 2025 年参与指南 |
+| [Hacktoberfest2026](https://github.com/avinash201199/Hacktoberfest2026) | 50 | 2026 年参与指南 |
 
 ## Trending 追踪
 
