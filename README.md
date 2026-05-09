@@ -116,8 +116,12 @@
 
 ## 外部精选教程
 
+> **强烈推荐** [GitHub Learn](https://learn.github.com/) — GitHub 官方学习平台，提供课程、技能训练和认证考试。
+
 | 教程 | 作者/来源 | 说明 |
 |------|----------|------|
+| **[GitHub Learn](https://learn.github.com/)** | **GitHub 官方** | **官方学习平台（强烈推荐）** |
+| **[GitHub Credentials](https://learn.github.com/credentials)** | **GitHub 官方** | **5种官方认证徽章和考试** |
 | [GitHub 使用指南](https://github.com/xirong/my-git/blob/master/how-to-use-github.md) | @xirong (7.4k⭐) | 最全面的中文 GitHub 入门指南 |
 | [GitHub 官方认证文档](https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications) | GitHub Docs | 5 种官方认证详解 |
 | [GitHub Skills](https://skills.github.com/) | GitHub 官方 | 交互式学习课程 |

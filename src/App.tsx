@@ -7,6 +7,7 @@ import Community from './pages/Community'
 import Visualization from './pages/Visualization'
 import Search from './pages/Search'
 import Tutorials from './pages/Tutorials'
+import BadgeWall from './pages/BadgeWall'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Route path="/visualization" element={<Visualization />} />
       <Route path="/search" element={<Search />} />
       <Route path="/tutorials" element={<Tutorials />} />
+      <Route path="/badges" element={<BadgeWall />} />
     </Routes>
   )
 }

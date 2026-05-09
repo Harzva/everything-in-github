@@ -2,19 +2,43 @@
 
 > 通过 GitHub 官方认证，展示你在 GitHub 技术与工作流方面的专业能力。
 
+## 官方学习平台
+
+**[GitHub Learn](https://learn.github.com/)** — GitHub 官方学习平台，提供课程、技能和认证：
+- **Courses** — 结构化学习课程
+- **Skills** — 交互式 GitHub 技能训练
+- **Credentials** — 官方认证徽章和考试
+- **Learning Pathways** — 推荐学习路径
+
+> [查看认证徽章墙 →](../../README.md#github-credentials-徽章)
+
+---
+
 ## 认证概览
 
-GitHub 目前提供 **5 种专业认证**，涵盖从基础使用到高级安全、AI 编程的各个方面。
+GitHub 目前提供 **5 种专业认证** 和 **2 种 Applied Skills**，涵盖从基础使用到高级安全、AI 编程的各个方面。
 
 | 认证 | 级别 | 考试代码 | 时长 | 费用 |
 |------|------|---------|------|------|
-| **GitHub Foundations** | 入门级 | GHFC | 90分钟 | $99 |
-| **GitHub Actions** | 中级 | GHAC | 120分钟 | $149 |
-| **GitHub Advanced Security** | 高级 | GHSC | 120分钟 | $149 |
-| **GitHub Administration** | 中级 | GHAD | 120分钟 | $149 |
-| **GitHub Copilot** | 中级 | GHCP | 90分钟 | $99 |
+| **GitHub Foundations** | 入门级 | GHFC | 100分钟 | $99 |
+| **GitHub Actions** | 中级 | GHAC | 100分钟 | $99 |
+| **GitHub Advanced Security** | 高级 | GHSC | 100分钟 | $99 |
+| **GitHub Administration** | 中级 | GHAD | 100分钟 | $99 |
+| **GitHub Copilot** | 中级 | GHCP | 100分钟 | $99 |
 
-[官方认证页面](https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications)
+**考试形式：**
+- 100 分钟，包含约 60 个评分选择题和 10-15 个预测试题
+- 闭卷评估
+- 通过 Pearson VUE 考试中心或在线考试
+- 认证有效期 2 年，续期有 50% 折扣
+- 学生可通过 [GitHub Student Developer Pack](https://education.github.com/) 获得免费考试券
+
+**认证价值：**
+- 79% 的认证员工表示工作质量提高
+- 70% 表示生产力提高
+- 32% 获得了加薪
+
+[查看官方认证页面](https://learn.github.com/credentials)
 
 ---
 
@@ -29,13 +53,14 @@ GitHub 目前提供 **5 种专业认证**，涵盖从基础使用到高级安全
 - **在 GitHub 仓库中工作** — README、LICENSE、.gitignore
 
 ### 学习资源
+- [GitHub Learn - Foundations 课程](https://learn.github.com/)
 - [GitHub Skills - Introduction to GitHub](https://skills.github.com/)
 - [GitHub 文档 - 开始使用](https://docs.github.com/zh/get-started)
 - [本仓库 Git 基础教程](../basics/git-basics.md)
 
 ### 考试报名
-- [注册考试](https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/registering-for-a-github-certifications-exam)
-- 通过 [Certiport](https://www.certiport.com/) 或 PSI 预约考试
+- [注册考试](https://learn.github.com/credentials)
+- 通过 [Pearson VUE](https://home.pearsonvue.com/) 预约考试
 
 ---
 
@@ -50,6 +75,7 @@ GitHub 目前提供 **5 种专业认证**，涵盖从基础使用到高级安全
 - **软件管道** — CI/CD 最佳实践
 
 ### 学习资源
+- [GitHub Learn - Actions 课程](https://learn.github.com/)
 - [GitHub Skills - GitHub Actions](https://skills.github.com/)
 - [Actions 官方文档](https://docs.github.com/zh/actions)
 - [本仓库 Actions 教程](../actions-advanced/first-workflow.md)
@@ -67,6 +93,7 @@ GitHub 目前提供 **5 种专业认证**，涵盖从基础使用到高级安全
 - **安全实现** — security policies、SBOM、安全最佳实践
 
 ### 学习资源
+- [GitHub Learn - Security 课程](https://learn.github.com/)
 - [GitHub Security Lab](https://securitylab.github.com/)
 - [CodeQL 文档](https://docs.github.com/zh/code-security/code-scanning/introduction-to-code-scanning/about-code-scanning-with-codeql)
 - [本仓库安全教程](../security/codeql.md)
@@ -83,6 +110,7 @@ GitHub 目前提供 **5 种专业认证**，涵盖从基础使用到高级安全
 - **高效协作** — 团队管理、项目板、自动化规则
 
 ### 学习资源
+- [GitHub Learn - Administration 课程](https://learn.github.com/)
 - [GitHub Enterprise 文档](https://docs.github.com/zh/enterprise-cloud@latest/admin)
 - [组织管理指南](https://docs.github.com/zh/organizations)
 
@@ -98,25 +126,42 @@ GitHub 目前提供 **5 种专业认证**，涵盖从基础使用到高级安全
 - **Copilot 计划** — Individual/Business/Enterprise 功能差异
 
 ### 学习资源
+- [GitHub Learn - Copilot 课程](https://learn.github.com/)
 - [Copilot 文档](https://docs.github.com/zh/copilot)
 - [本仓库 Copilot 教程](../copilot/getting-started.md)
 
 ---
 
+## Applied Skills
+
+除了认证考试，GitHub 还提供 **Applied Skills** — 针对特定技术场景的评估：
+
+| 技能 | 说明 |
+|------|------|
+| **Accelerate app development by using GitHub Copilot** | 使用 Copilot 加速应用开发 |
+| **Automate Azure Load Testing by using GitHub Actions** | 使用 Actions 自动化 Azure 负载测试 |
+
+---
+
 ## 认证准备建议
 
-1. **先学再做** — 完成对应的 GitHub Skills 课程
+1. **先学再做** — 完成对应的 [GitHub Learn](https://learn.github.com/) 课程
 2. **动手实践** — 在实际项目中应用所学知识
 3. **官方文档** — 仔细阅读考试范围内的所有官方文档
 4. **模拟练习** — 使用本仓库的教程进行自测
+5. **加入社区** — 参与 [GitHub Community](https://github.com/community) 讨论
 
 ## 认证展示
 
 获得认证后，你可以：
-- 在 GitHub Profile 中展示认证徽章
+- 在 [GitHub Profile](https://github.com/settings/profile) 中展示认证徽章
 - 在 LinkedIn 上添加认证
 - 在简历中列出专业技能
+- 获取数字徽章分享至社交媒体
 
 ---
 
-> 更多信息：[GitHub Certifications 官方文档](https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications)
+> 更多信息：
+> - [GitHub Learn 官方平台](https://learn.github.com/)
+> - [GitHub Credentials 认证页面](https://learn.github.com/credentials)
+> - [GitHub Certifications 文档](https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications)

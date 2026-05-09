@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
-import { Trophy, User, Zap, Users, BarChart3, Search, Menu, X, Github, BookOpen } from 'lucide-react';
+import { Trophy, User, Zap, Users, BarChart3, Search, Menu, X, Github, BookOpen, Medal } from 'lucide-react';
 
 const navLinks = [
   { to: '/', label: '首页' },
   { to: '/tutorials', label: '教程' },
+  { to: '/badges', label: '徽章墙' },
   { to: '/achievements', label: '成就徽章' },
   { to: '/profile', label: '个人资料' },
   { to: '/actions', label: '自动化' },
