@@ -4,6 +4,10 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', '"Courier New"', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -58,6 +62,11 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        card: "0 4px 24px rgba(0,0,0,0.4)",
+        elevated: "0 8px 40px rgba(0,0,0,0.5)",
+        glowViolet: "0 0 40px rgba(139,92,246,0.3)",
+        glowCyan: "0 0 40px rgba(6,182,212,0.3)",
+        glowAmber: "0 0 30px rgba(245,158,11,0.25)",
       },
       keyframes: {
         "accordion-down": {
@@ -72,11 +81,23 @@ module.exports = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
+        glowDrift: {
+          "0%, 100%": { transform: "translate(-50%, -50%) translate(0, 0)" },
+          "25%": { transform: "translate(-50%, -50%) translate(15px, -10px)" },
+          "50%": { transform: "translate(-50%, -50%) translate(-10px, 5px)" },
+          "75%": { transform: "translate(-50%, -50%) translate(5px, 10px)" },
+        },
+        glowPulse: {
+          "0%, 100%": { opacity: "0.06" },
+          "50%": { opacity: "0.1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
+        glowDrift: "glowDrift 15s ease-in-out infinite",
+        glowPulse: "glowPulse 6s ease-in-out infinite",
       },
     },
   },
