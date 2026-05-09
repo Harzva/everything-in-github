@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "title": "GitHub 教程体系",
+    "description": "从入门到官方认证的系统化 GitHub 学习路径",
+    "version": "2.0.0",
+    "updated": "2026-05-09"
+  },
+  "learningPaths": [
+    {
+      "id": "beginner",
+      "name": "新手入门",
+      "duration": "1-2周",
+      "description": "掌握 GitHub 基础操作，能够参与开源项目",
+      "steps": [
+        {"day": "1-2", "topic": "了解平台", "items": ["GitHub 入门教程", "创建第一个仓库"]},
+        {"day": "3-4", "topic": "Git 基础", "items": ["Git 基础操作", "GitHub Skills 课程"]},
+        {"day": "5-6", "topic": "仓库管理", "items": ["仓库管理指南", "配置 SSH 密钥"]},
+        {"day": "7", "topic": "Pull Request", "items": ["PR 指南", "Fork 项目并提交 PR"]}
+      ]
+    },
+    {
+      "id": "collaboration",
+      "name": "协作开发",
+      "duration": "2-3周",
+      "description": "掌握团队协作流程和项目管理",
+      "steps": [
+        {"week": "1", "topic": "Git 工作流", "items": ["分支策略", "Git Flow / GitHub Flow"]},
+        {"week": "2", "topic": "协作工具", "items": ["Issues 管理", "代码审查", "Projects 看板"]},
+        {"week": "3", "topic": "自动化入门", "items": ["首个 Actions 工作流", "GitHub Pages 部署"]}
+      ]
+    },
+    {
+      "id": "certification",
+      "name": "专业认证",
+      "duration": "1-2月",
+      "description": "通过 GitHub 官方认证，提升专业竞争力",
+      "steps": [
+        {"phase": "1", "topic": "GitHub Foundations", "duration": "2-3周", "items": ["基础教程", "GitHub Skills 课程", "通过 GHFC 考试"]},
+        {"phase": "2", "topic": "GitHub Actions", "duration": "2-3周", "items": ["Actions 高级教程", "构建 CI/CD 管道", "通过 GHAC 考试"]},
+        {"phase": "3", "topic": "GitHub Security", "duration": "2-3周", "items": ["安全教程", "CodeQL 实践", "通过 GHSC 考试"]}
+      ]
+    },
+    {
+      "id": "expert",
+      "name": "全栈专家",
+      "duration": "3月+",
+      "description": "成为 GitHub 生态的专家",
+      "steps": [
+        {"phase": "1", "topic": "基础教程", "items": ["全部基础", "全部进阶"]},
+        {"phase": "2", "topic": "高级主题", "items": ["Actions 高级", "Security 高级"]},
+        {"phase": "3", "topic": "AI 与认证", "items": ["Copilot", "全部认证"]}
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "basics",
+      "name": "基础使用",
+      "icon": "BookOpen",
+      "color": "#10B981",
+      "tutorials": [
+        {"name": "GitHub 入门教程", "file": "tutorials/basics/getting-started.md", "description": "图文并茂的入门指南"},
+        {"name": "Git 基础操作", "file": "tutorials/basics/git-basics.md", "description": "init/add/commit/push/clone"},
+        {"name": "仓库管理指南", "file": "tutorials/basics/repository-management.md", "description": "创建、克隆、Fork、分支管理"}
+      ]
+    },
+    {
+      "id": "collaboration",
+      "name": "协作工作流",
+      "icon": "Users",
+      "color": "#8B5CF6",
+      "tutorials": [
+        {"name": "Pull Request 指南", "file": "tutorials/collaboration/pull-requests.md", "description": "提交、审查、合并 PR"},
+        {"name": "Issues 管理", "file": "topics/community/README.md", "description": "创建、标签、里程碑"},
+        {"name": "代码审查", "file": "tutorials/collaboration/code-review.md", "description": "Review 流程与最佳实践"}
+      ]
+    },
+    {
+      "id": "github-pages",
+      "name": "GitHub Pages",
+      "icon": "Globe",
+      "color": "#06B6D4",
+      "tutorials": [
+        {"name": "快速部署个人网站", "file": "tutorials/github-pages/quickstart.md", "description": "5分钟搭建个人主页"},
+        {"name": "Jekyll 主题使用", "file": "tutorials/github-pages/jekyll-themes.md", "description": "美化你的 GitHub Pages"},
+        {"name": "自定义域名", "file": "tutorials/github-pages/custom-domain.md", "description": "绑定自己的域名"}
+      ]
+    },
+    {
+      "id": "actions",
+      "name": "Actions 自动化",
+      "icon": "Zap",
+      "color": "#F59E0B",
+      "tutorials": [
+        {"name": "首个工作流", "file": "tutorials/actions-advanced/first-workflow.md", "description": "Hello World Actions"},
+        {"name": "CI/CD 实战", "file": "tutorials/actions-advanced/ci-cd-pipeline.md", "description": "自动化测试与部署"},
+        {"name": "常用 Actions 推荐", "file": "topics/actions/README.md", "description": "精选 Actions 工具"}
+      ]
+    },
+    {
+      "id": "security",
+      "name": "安全",
+      "icon": "Shield",
+      "color": "#EF4444",
+      "tutorials": [
+        {"name": "Dependabot 配置", "file": "tutorials/security/dependabot.md", "description": "自动依赖更新"},
+        {"name": "CodeQL 代码扫描", "file": "tutorials/security/codeql.md", "description": "安全漏洞检测"},
+        {"name": "密钥管理", "file": "tutorials/security/secrets-management.md", "description": "Actions 密钥最佳实践"}
+      ]
+    },
+    {
+      "id": "copilot",
+      "name": "Copilot AI",
+      "icon": "Bot",
+      "color": "#EC4899",
+      "tutorials": [
+        {"name": "Copilot 入门", "file": "tutorials/copilot/getting-started.md", "description": "安装与基础使用"},
+        {"name": "提示词技巧", "file": "tutorials/copilot/prompt-engineering.md", "description": "高效使用 Copilot"},
+        {"name": "Copilot Chat", "file": "tutorials/copilot/copilot-chat.md", "description": "交互式 AI 编程"}
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "id": "foundations",
+      "name": "GitHub Foundations",
+      "icon": "GraduationCap",
+      "level": "入门级",
+      "code": "GHFC",
+      "duration": "90分钟",
+      "price": "$99",
+      "color": "#10B981",
+      "scope": ["协作", "GitHub 产品", "Git 基础知识", "仓库工作"],
+      "tutorialFile": "tutorials/certifications/README.md",
+      "officialLink": "https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications"
+    },
+    {
+      "id": "actions",
+      "name": "GitHub Actions",
+      "icon": "Zap",
+      "level": "中级",
+      "code": "GHAC",
+      "duration": "120分钟",
+      "price": "$149",
+      "color": "#F59E0B",
+      "scope": ["简化工作流", "自动化任务", "优化软件管道"],
+      "tutorialFile": "tutorials/certifications/README.md",
+      "officialLink": "https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications"
+    },
+    {
+      "id": "security",
+      "name": "GitHub Advanced Security",
+      "icon": "Shield",
+      "level": "高级",
+      "code": "GHSC",
+      "duration": "120分钟",
+      "price": "$149",
+      "color": "#EF4444",
+      "scope": ["漏洞识别", "工作流安全性", "安全实现"],
+      "tutorialFile": "tutorials/certifications/README.md",
+      "officialLink": "https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications"
+    },
+    {
+      "id": "admin",
+      "name": "GitHub Administration",
+      "icon": "Settings",
+      "level": "中级",
+      "code": "GHAD",
+      "duration": "120分钟",
+      "price": "$149",
+      "color": "#06B6D4",
+      "scope": ["仓库管理", "工作流优化", "高效协作"],
+      "tutorialFile": "tutorials/certifications/README.md",
+      "officialLink": "https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications"
+    },
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot",
+      "icon": "Bot",
+      "level": "中级",
+      "code": "GHCP",
+      "duration": "90分钟",
+      "price": "$99",
+      "color": "#EC4899",
+      "scope": ["Responsible AI", "Copilot 功能", "计划与定价"],
+      "tutorialFile": "tutorials/certifications/README.md",
+      "officialLink": "https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications"
+    }
+  ],
+  "externalResources": [
+    {"name": "GitHub 使用指南", "author": "@xirong (7.4k⭐)", "url": "https://github.com/xirong/my-git/blob/master/how-to-use-github.md", "description": "最全面的中文 GitHub 入门指南"},
+    {"name": "GitHub 官方认证文档", "author": "GitHub Docs", "url": "https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications", "description": "5 种官方认证详解"},
+    {"name": "GitHub Skills", "author": "GitHub 官方", "url": "https://skills.github.com/", "description": "交互式学习课程"},
+    {"name": "GitHub 秘籍", "author": "@tiimgreen", "url": "https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.zh-cn.md", "description": "Git 和 GitHub 技巧汇总"},
+    {"name": "GotGitHub", "author": "蒋鑫", "url": "https://github.com/xirong/my-git/blob/master/GotGitHub.md", "description": "《Git权威指南》作者的 GitHub 详解"},
+    {"name": "GitHub Guides", "author": "GitHub 官方", "url": "https://guides.github.com/", "description": "9个方面的图文详细教程"},
+    {"name": "Mastering Markdown", "author": "GitHub 官方", "url": "https://guides.github.com/features/mastering-markdown/", "description": "Markdown 完整指南"},
+    {"name": "GitHub 搜索技巧", "author": "GitHub 官方", "url": "https://help.github.com/categories/search/", "description": "高级搜索语法"}
+  ]
+}

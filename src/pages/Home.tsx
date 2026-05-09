@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   Trophy, User, Zap, Users, BarChart3, Star, GitFork, ChevronDown,
-  ArrowRight, Search, ExternalLink, Github
+  ArrowRight, Search, ExternalLink, Github, BookOpen
 } from 'lucide-react';
 import Layout from '../components/Layout';
 import { categories, featuredRepos, allRepos, type Repo } from '../data/repos';
@@ -170,7 +170,7 @@ function HeroSection() {
             <ArrowRight className="h-4 w-4" />
           </a>
           <Link
-            to="/search"
+            to="/tutorials"
             className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-base font-semibold transition-all duration-300 hover:scale-[1.02]"
             style={{
               backgroundColor: 'transparent',
@@ -178,7 +178,18 @@ function HeroSection() {
               color: 'var(--text-secondary)',
             }}
           >
-            查看仓库列表
+            学习教程
+          </Link>
+          <Link
+            to="/search"
+            className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-[1.02]"
+            style={{
+              backgroundColor: 'transparent',
+              border: '1px solid rgba(255,255,255,0.06)',
+              color: 'var(--text-muted)',
+            }}
+          >
+            仓库列表
           </Link>
         </motion.div>
 
