@@ -2,7 +2,7 @@ import { useState, useMemo, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Link } from 'react-router';
 import {
-  Search,
+  Search as SearchIcon,
   X,
   Star,
   GitFork,
@@ -896,7 +896,7 @@ export default function Search() {
               height: 56,
             }}
           >
-            <Search className="h-5 w-5 shrink-0" style={{ color: 'var(--text-muted)' }} />
+            <SearchIcon className="h-5 w-5 shrink-0" style={{ color: 'var(--text-muted)' }} />
             <input
               type="text"
               value={query}

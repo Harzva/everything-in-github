@@ -208,7 +208,7 @@ function HeroSection() {
    Section 2: Theme Categories
    ═══════════════════════════════════ */
 function CategoryCard({ category, index }: { category: typeof categories[0]; index: number }) {
-  const Icon = iconMap[category.icon] || Star;
+  const Icon = (iconMap[category.icon] || Star) as React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
   const accentColor = accentMap[category.accent] || category.accentColor;
 
   return (

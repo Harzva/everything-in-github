@@ -54,7 +54,7 @@ function staggerContainer(stagger = 0.08, delay = 0) {
 
 interface BadgeData {
   name: string;
-  icon: React.ElementType;
+  icon: React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
   color: string;
   tier: number | null;
   difficulty: string | null;
@@ -193,7 +193,7 @@ interface TierInfo {
 
 interface TierAchievements {
   badge: string;
-  icon: React.ElementType;
+  icon: React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
   color: string;
   tiers: TierInfo[];
 }
@@ -470,7 +470,7 @@ function BadgeCard({
   index: number;
   featured: boolean;
 }) {
-  const Icon = badge.icon;
+  const Icon = badge.icon as React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
 
   const difficultyColor =
     badge.difficulty === 'Easy'
@@ -506,7 +506,7 @@ function BadgeCard({
             border: `1px solid ${badge.color}22`,
             boxShadow: `0 0 20px ${badge.color}15`,
           }}
-          whileHover={{ scale: 1.1, transition: { duration: 0.2, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number] } }
+          whileHover={{ scale: 1.1, transition: { duration: 0.2, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number] } }}
         >
           <Icon size={32} style={{ color: badge.color }} />
         </motion.div>
@@ -704,7 +704,7 @@ function TierProgressionSection() {
           variants={staggerContainer(0.15, 0.2)}
         >
           {tierAchievements.map((ta) => {
-            const Icon = ta.icon;
+            const Icon = ta.icon as React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
             return (
               <motion.div
                 key={ta.badge}
@@ -840,7 +840,7 @@ function AcquisitionGuide() {
         >
           <AccordionPrimitive.Root type="single" collapsible>
             {guideBadges.map((badge) => {
-              const Icon = badge.icon;
+              const Icon = badge.icon as React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
               const difficultyColor =
                 badge.difficulty === 'Easy'
                   ? 'var(--accent-emerald)'

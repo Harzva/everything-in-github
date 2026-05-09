@@ -6,7 +6,7 @@ import {
   Flame,
   Trophy,
   Eye,
-  Layout,
+  Layout as LayoutIcon,
   Rss,
   Star,
   Github,
@@ -1166,7 +1166,7 @@ function TrophyExtras() {
       ),
     },
     {
-      icon: Layout,
+      icon: LayoutIcon,
       color: 'var(--accent-violet)',
       repo: 'vn7n24fzkq/github-profile-summary-cards',
       stars: '3.5k',
