@@ -1,10 +1,27 @@
 {
   "meta": {
     "title": "GitHub 教程体系",
-    "description": "从入门到官方认证的系统化 GitHub 学习路径",
-    "version": "2.0.0",
-    "updated": "2026-05-09"
+    "description": "参考 GitHub Docs、廖雪峰 Git 教程与菜鸟 GitHub 简明教程整理的系统化学习路径",
+    "version": "2.1.0",
+    "updated": "2026-05-13"
   },
+  "referenceSources": [
+    {
+      "name": "GitHub Docs 入门",
+      "url": "https://docs.github.com/zh/get-started",
+      "description": "官方入门、GitHub Flow、Git 基础、远程仓库、推送与拉取等体系化文档"
+    },
+    {
+      "name": "廖雪峰：使用 GitHub",
+      "url": "https://liaoxuefeng.com/books/git/github/index.html",
+      "description": "Fork、从自己账号 Clone、推送修改、发起 Pull Request 的中文协作讲解"
+    },
+    {
+      "name": "菜鸟教程：Github 简明教程",
+      "url": "https://www.runoob.com/w3cnote/git-guide.html",
+      "description": "SSH Key、git config、remote、add、commit、push、branch、pull 的入门命令示例"
+    }
+  ],
   "learningPaths": [
     {
       "id": "beginner",
@@ -59,9 +76,9 @@
       "icon": "BookOpen",
       "color": "#10B981",
       "tutorials": [
-        {"name": "GitHub 入门教程", "file": "tutorials/basics/getting-started.md", "description": "图文并茂的入门指南"},
-        {"name": "Git 基础操作", "file": "tutorials/basics/git-basics.md", "description": "init/add/commit/push/clone"},
-        {"name": "仓库管理指南", "file": "tutorials/basics/repository-management.md", "description": "创建、克隆、Fork、分支管理"}
+        {"name": "GitHub 入门教程", "file": "tutorials/basics/getting-started.md", "description": "账号、仓库、README、Star、Watch 与入门路线", "source": "GitHub Docs / 菜鸟教程"},
+        {"name": "Git 基础操作", "file": "tutorials/basics/git-basics.md", "description": "工作区、暂存区、提交、远程、推送、拉取", "source": "菜鸟教程 / GitHub Docs"},
+        {"name": "仓库管理指南", "file": "tutorials/basics/repository-management.md", "description": "创建、克隆、Fork、分支、远程 upstream", "source": "GitHub Docs / 廖雪峰"}
       ]
     },
     {
@@ -70,9 +87,9 @@
       "icon": "Users",
       "color": "#8B5CF6",
       "tutorials": [
-        {"name": "Pull Request 指南", "file": "tutorials/collaboration/pull-requests.md", "description": "提交、审查、合并 PR"},
-        {"name": "Issues 管理", "file": "topics/community/README.md", "description": "创建、标签、里程碑"},
-        {"name": "代码审查", "file": "tutorials/collaboration/code-review.md", "description": "Review 流程与最佳实践"}
+        {"name": "Pull Request 指南", "file": "tutorials/collaboration/pull-requests.md", "description": "Fork、分支、提交、同步 upstream、发起 PR", "source": "GitHub Docs / 廖雪峰"},
+        {"name": "Issues 管理", "file": "topics/community/README.md", "description": "创建、标签、里程碑、关联 PR", "source": "GitHub Docs"},
+        {"name": "代码审查", "file": "tutorials/collaboration/code-review.md", "description": "Review 流程、评论、变更请求与合并前检查", "source": "GitHub Docs"}
       ]
     },
     {
@@ -81,9 +98,9 @@
       "icon": "Globe",
       "color": "#06B6D4",
       "tutorials": [
-        {"name": "快速部署个人网站", "file": "tutorials/github-pages/quickstart.md", "description": "5分钟搭建个人主页"},
-        {"name": "Jekyll 主题使用", "file": "tutorials/github-pages/jekyll-themes.md", "description": "美化你的 GitHub Pages"},
-        {"name": "自定义域名", "file": "tutorials/github-pages/custom-domain.md", "description": "绑定自己的域名"}
+        {"name": "快速部署个人网站", "file": "tutorials/github-pages/quickstart.md", "description": "从仓库到 Pages 站点发布", "source": "GitHub Docs"},
+        {"name": "Jekyll 主题使用", "file": "tutorials/github-pages/jekyll-themes.md", "description": "主题、配置、Markdown 内容组织", "source": "GitHub Docs"},
+        {"name": "自定义域名", "file": "tutorials/github-pages/custom-domain.md", "description": "DNS、CNAME、HTTPS 与排错", "source": "GitHub Docs"}
       ]
     },
     {
@@ -92,9 +109,9 @@
       "icon": "Zap",
       "color": "#F59E0B",
       "tutorials": [
-        {"name": "首个工作流", "file": "tutorials/actions-advanced/first-workflow.md", "description": "Hello World Actions"},
-        {"name": "CI/CD 实战", "file": "tutorials/actions-advanced/ci-cd-pipeline.md", "description": "自动化测试与部署"},
-        {"name": "常用 Actions 推荐", "file": "topics/actions/README.md", "description": "精选 Actions 工具"}
+        {"name": "首个工作流", "file": "tutorials/actions-advanced/first-workflow.md", "description": "Hello World Actions 与 push 触发", "source": "GitHub Docs"},
+        {"name": "CI/CD 实战", "file": "tutorials/actions-advanced/ci-cd-pipeline.md", "description": "自动化安装、测试、构建、部署", "source": "GitHub Docs"},
+        {"name": "常用 Actions 推荐", "file": "topics/actions/README.md", "description": "精选 Actions 工具与使用场景", "source": "GitHub Docs"}
       ]
     },
     {
@@ -103,9 +120,9 @@
       "icon": "Shield",
       "color": "#EF4444",
       "tutorials": [
-        {"name": "Dependabot 配置", "file": "tutorials/security/dependabot.md", "description": "自动依赖更新"},
-        {"name": "CodeQL 代码扫描", "file": "tutorials/security/codeql.md", "description": "安全漏洞检测"},
-        {"name": "密钥管理", "file": "tutorials/security/secrets-management.md", "description": "Actions 密钥最佳实践"}
+        {"name": "Dependabot 配置", "file": "tutorials/security/dependabot.md", "description": "自动依赖更新", "source": "GitHub Docs"},
+        {"name": "CodeQL 代码扫描", "file": "tutorials/security/codeql.md", "description": "安全漏洞检测", "source": "GitHub Docs"},
+        {"name": "密钥管理", "file": "tutorials/security/secrets-management.md", "description": "Actions Secrets 与权限最小化", "source": "GitHub Docs"}
       ]
     },
     {
@@ -114,9 +131,9 @@
       "icon": "Bot",
       "color": "#EC4899",
       "tutorials": [
-        {"name": "Copilot 入门", "file": "tutorials/copilot/getting-started.md", "description": "安装与基础使用"},
-        {"name": "提示词技巧", "file": "tutorials/copilot/prompt-engineering.md", "description": "高效使用 Copilot"},
-        {"name": "Copilot Chat", "file": "tutorials/copilot/copilot-chat.md", "description": "交互式 AI 编程"}
+        {"name": "Copilot 入门", "file": "tutorials/copilot/getting-started.md", "description": "安装与基础使用", "source": "GitHub Docs"},
+        {"name": "提示词技巧", "file": "tutorials/copilot/prompt-engineering.md", "description": "上下文、约束、示例与迭代", "source": "GitHub Docs"},
+        {"name": "Copilot Chat", "file": "tutorials/copilot/copilot-chat.md", "description": "解释、重构、测试与调试", "source": "GitHub Docs"}
       ]
     }
   ],
@@ -188,6 +205,9 @@
     }
   ],
   "externalResources": [
+    {"name": "GitHub Docs 入门", "author": "GitHub 官方", "url": "https://docs.github.com/zh/get-started", "description": "官方入门、GitHub Flow、Git 基础、认证、协作与安全入口"},
+    {"name": "廖雪峰：使用 GitHub", "author": "廖雪峰", "url": "https://liaoxuefeng.com/books/git/github/index.html", "description": "Fork、Clone、推送修改、发起 Pull Request 的清晰中文讲解"},
+    {"name": "Github 简明教程", "author": "菜鸟教程", "url": "https://www.runoob.com/w3cnote/git-guide.html", "description": "SSH Key、远程仓库、工作流、分支、推送和拉取的命令示例"},
     {"name": "GitHub 使用指南", "author": "@xirong (7.4k⭐)", "url": "https://github.com/xirong/my-git/blob/master/how-to-use-github.md", "description": "最全面的中文 GitHub 入门指南"},
     {"name": "GitHub 官方认证文档", "author": "GitHub Docs", "url": "https://docs.github.com/zh/get-started/showcase-your-expertise-with-github-certifications/about-github-certifications", "description": "5 种官方认证详解"},
     {"name": "GitHub Skills", "author": "GitHub 官方", "url": "https://skills.github.com/", "description": "交互式学习课程"},

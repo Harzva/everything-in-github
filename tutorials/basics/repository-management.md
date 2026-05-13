@@ -2,6 +2,8 @@
 
 > 学习如何创建、配置和管理 GitHub 仓库。
 
+参考来源：[GitHub Docs 入门](https://docs.github.com/zh/get-started)、[廖雪峰：使用 GitHub](https://liaoxuefeng.com/books/git/github/index.html)。
+
 ## 创建仓库
 
 ### 通过网页创建
@@ -39,6 +41,25 @@ Settings → Branches → Add rule → Branch name pattern: main
 ☑️ Require a pull request before merging
 ☑️ Require status checks to pass
 ☑️ Require branches to be up to date before merging
+```
+
+## Fork 与 upstream
+
+Fork 适合参与别人的开源项目。你先把项目复制到自己的账号，再从自己的仓库 Clone，修改后通过 Pull Request 回到原项目。
+
+```bash
+git clone git@github.com:你的用户名/项目名.git
+cd 项目名
+git remote add upstream git@github.com:原作者/项目名.git
+git fetch upstream
+```
+
+保持 Fork 同步：
+
+```bash
+git checkout main
+git pull upstream main
+git push origin main
 ```
 
 ## README 模板

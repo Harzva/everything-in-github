@@ -2,6 +2,8 @@
 
 > Git 是分布式版本控制系统，是 GitHub 的核心基础。
 
+参考来源：[菜鸟教程：Github 简明教程](https://www.runoob.com/w3cnote/git-guide.html)、[GitHub Docs 入门](https://docs.github.com/zh/get-started)。
+
 ## 安装 Git
 
 ```bash
@@ -23,6 +25,21 @@ $ git config --global user.email "your@email.com"
 $ git config --global init.defaultBranch main
 ```
 
+## SSH Key 与远程连接
+
+菜鸟教程的入门流程把 SSH Key 放在较前的位置，因为它能减少每次推送时输入账号密码的摩擦。
+
+```bash
+ssh-keygen -t ed25519 -C "your@email.com"
+cat ~/.ssh/id_ed25519.pub
+```
+
+把公钥内容添加到 GitHub 的 **Settings -> SSH and GPG keys** 后，可以用 SSH 地址克隆仓库：
+
+```bash
+git clone git@github.com:OWNER/REPO.git
+```
+
 ## 核心工作流程
 
 ```
@@ -37,6 +54,8 @@ $ git init                      # 初始化仓库
 $ git clone <url>               # 克隆远程仓库
 $ git remote -v                 # 查看远程仓库
 $ git remote add origin <url>   # 添加远程仓库
+$ git pull origin main          # 拉取远程更新
+$ git push -u origin main       # 首次推送并建立追踪关系
 ```
 
 ### 提交操作

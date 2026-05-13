@@ -12,7 +12,8 @@ const categoryIcons: Record<string, React.ElementType> = {
 };
 
 export default function Tutorials() {
-  const [activeTab, setActiveTab] = useState<'overview' | 'tutorials' | 'certifications' | 'paths' | 'external'>('overview');
+  type TutorialTab = 'overview' | 'tutorials' | 'certifications' | 'paths' | 'external';
+  const [activeTab, setActiveTab] = useState<TutorialTab>('overview');
 
   const tabs = [
     { id: 'overview' as const, label: '总览', icon: BookOpen },
@@ -53,7 +54,9 @@ export default function Tutorials() {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', display: 'flex', gap: '4px', overflowX: 'auto' }}>
           {tabs.map(tab => (
             <button
+              type="button"
               key={tab.id}
+              data-tab={tab.id}
               onClick={() => setActiveTab(tab.id)}
               style={{
                 padding: '12px 20px',
@@ -83,7 +86,7 @@ export default function Tutorials() {
 
       {/* Content */}
       <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 24px 80px' }}>
-        {activeTab === 'overview' && <OverviewTab />}
+        {activeTab === 'overview' && <OverviewTab onNavigate={setActiveTab} />}
         {activeTab === 'tutorials' && <TutorialsTab />}
         {activeTab === 'certifications' && <CertificationsTab />}
         {activeTab === 'paths' && <PathsTab />}
@@ -94,7 +97,7 @@ export default function Tutorials() {
 }
 
 /* ===== Overview Tab ===== */
-function OverviewTab() {
+function OverviewTab({ onNavigate }: { onNavigate: (tab: 'tutorials' | 'certifications' | 'paths' | 'external') => void }) {
   const stats = [
     { label: '官方认证', value: '5 种', color: '#10B981', icon: GraduationCap },
     { label: '使用教程', value: '20+ 篇', color: '#8B5CF6', icon: BookOpen },
@@ -132,16 +135,18 @@ function OverviewTab() {
       {/* Quick Links */}
       <div>
         <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '24px' }}>快速导航</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: '16px' }}>
           {[
-            { title: '官方认证体系', desc: '5 种 GitHub 官方认证详解', icon: GraduationCap, color: '#10B981', action: 'certifications' },
-            { title: '使用教程', desc: '从入门到进阶的系统化教程', icon: BookOpen, color: '#8B5CF6', action: 'tutorials' },
-            { title: '学习路径', desc: '4 条推荐学习路线', icon: MapPin, color: '#F59E0B', action: 'paths' },
-            { title: '外部资源', desc: '社区精选教程和官方文档', icon: ExternalLink, color: '#06B6D4', action: 'external' },
+            { title: '官方认证体系', desc: '5 种 GitHub 官方认证详解', icon: GraduationCap, color: '#10B981', action: 'certifications' as const },
+            { title: '使用教程', desc: '从入门到进阶的系统化教程', icon: BookOpen, color: '#8B5CF6', action: 'tutorials' as const },
+            { title: '学习路径', desc: '4 条推荐学习路线', icon: MapPin, color: '#F59E0B', action: 'paths' as const },
+            { title: '外部资源', desc: '社区精选教程和官方文档', icon: ExternalLink, color: '#06B6D4', action: 'external' as const },
           ].map(card => (
             <button
+              type="button"
               key={card.title}
-              onClick={() => document.querySelector(`button[data-tab="${card.action}"]`)?.dispatchEvent(new Event('click'))}
+              data-tab={card.action}
+              onClick={() => onNavigate(card.action)}
               style={{ padding: '24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = card.color + '40'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; }}
@@ -150,6 +155,27 @@ function OverviewTab() {
               <div style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '4px' }}>{card.title}</div>
               <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{card.desc}</div>
             </button>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ marginTop: '48px' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '24px' }}>参考来源</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '16px' }}>
+          {tutorialsData.referenceSources.map((source) => (
+            <a
+              key={source.url}
+              href={source.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '20px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', color: 'var(--text-primary)', textDecoration: 'none' }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                <strong style={{ fontSize: '0.95rem' }}>{source.name}</strong>
+                <ExternalLink size={14} style={{ color: 'var(--accent)' }} />
+              </div>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>{source.description}</span>
+            </a>
           ))}
         </div>
       </div>
@@ -233,6 +259,9 @@ function TutorialsTab() {
                 <div>
                   <div style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '4px' }}>{t.name}</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{t.description}</div>
+                  {'source' in t && (
+                    <div style={{ fontSize: '0.7rem', color: categories[activeCategory].color, marginTop: '6px' }}>参考：{t.source}</div>
+                  )}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <span style={{ fontSize: '0.7rem', padding: '4px 10px', borderRadius: '20px', background: categories[activeCategory].color + '15', color: categories[activeCategory].color }}>MD</span>
