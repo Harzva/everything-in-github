@@ -14,9 +14,6 @@ import {
   Rocket,
   Snowflake,
   ChevronDown,
-  Copy,
-  Check,
-  ExternalLink,
 } from 'lucide-react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import Layout from '../components/Layout';
@@ -55,6 +52,8 @@ function staggerContainer(stagger = 0.08, delay = 0) {
 interface BadgeData {
   name: string;
   icon: React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
+  image: string;
+  tierImages?: string[];
   color: string;
   tier: number | null;
   difficulty: string | null;
@@ -68,6 +67,7 @@ const badges: BadgeData[] = [
   {
     name: 'Quickdraw',
     icon: Zap,
+    image: './achievement-badges/quickdraw.png',
     color: '#F59E0B',
     tier: null,
     difficulty: 'Easy',
@@ -84,6 +84,7 @@ const badges: BadgeData[] = [
   {
     name: 'YOLO',
     icon: Flame,
+    image: './achievement-badges/yolo.png',
     color: '#F43F5E',
     tier: null,
     difficulty: 'Medium',
@@ -99,6 +100,7 @@ const badges: BadgeData[] = [
   {
     name: 'Public Sponsor',
     icon: Heart,
+    image: './achievement-badges/public-sponsor.png',
     color: '#EC4899',
     tier: null,
     difficulty: 'Easy',
@@ -115,6 +117,13 @@ const badges: BadgeData[] = [
   {
     name: 'Starstruck',
     icon: Star,
+    image: './achievement-badges/starstruck.png',
+    tierImages: [
+      './achievement-badges/starstruck.png',
+      './achievement-badges/starstruck-bronze.png',
+      './achievement-badges/starstruck-silver.png',
+      './achievement-badges/starstruck-gold.png',
+    ],
     color: '#F59E0B',
     tier: 4,
     difficulty: 'Hard',
@@ -124,6 +133,13 @@ const badges: BadgeData[] = [
   {
     name: 'Pair Extraordinaire',
     icon: Users,
+    image: './achievement-badges/pair-extraordinaire.png',
+    tierImages: [
+      './achievement-badges/pair-extraordinaire.png',
+      './achievement-badges/pair-extraordinaire-bronze.png',
+      './achievement-badges/pair-extraordinaire-silver.png',
+      './achievement-badges/pair-extraordinaire-gold.png',
+    ],
     color: '#06B6D4',
     tier: 3,
     difficulty: 'Hard',
@@ -133,6 +149,13 @@ const badges: BadgeData[] = [
   {
     name: 'Pull Shark',
     icon: GitPullRequest,
+    image: './achievement-badges/pull-shark.png',
+    tierImages: [
+      './achievement-badges/pull-shark.png',
+      './achievement-badges/pull-shark-bronze.png',
+      './achievement-badges/pull-shark-silver.png',
+      './achievement-badges/pull-shark-gold.png',
+    ],
     color: '#3B82F6',
     tier: 3,
     difficulty: 'Medium',
@@ -142,6 +165,13 @@ const badges: BadgeData[] = [
   {
     name: 'Galaxy Brain',
     icon: Lightbulb,
+    image: './achievement-badges/galaxy-brain.png',
+    tierImages: [
+      './achievement-badges/galaxy-brain.png',
+      './achievement-badges/galaxy-brain-bronze.png',
+      './achievement-badges/galaxy-brain-silver.png',
+      './achievement-badges/galaxy-brain-gold.png',
+    ],
     color: '#8B5CF6',
     tier: 2,
     difficulty: 'Hard',
@@ -151,6 +181,7 @@ const badges: BadgeData[] = [
   {
     name: 'Heart On Your Sleeve',
     icon: Heart,
+    image: './achievement-badges/heart-on-your-sleeve.png',
     color: '#F43F5E',
     tier: null,
     difficulty: 'Testing',
@@ -160,6 +191,7 @@ const badges: BadgeData[] = [
   {
     name: 'Open Sourcerer',
     icon: Code,
+    image: './achievement-badges/open-sourcerer.png',
     color: '#10B981',
     tier: null,
     difficulty: 'Testing',
@@ -169,6 +201,7 @@ const badges: BadgeData[] = [
   {
     name: 'Mars 2020 Contributor',
     icon: Rocket,
+    image: './achievement-badges/mars-2020.png',
     color: '#F97316',
     tier: null,
     difficulty: null,
@@ -178,6 +211,7 @@ const badges: BadgeData[] = [
   {
     name: 'Arctic Code Vault Contributor',
     icon: Snowflake,
+    image: './achievement-badges/arctic-code-vault.png',
     color: '#3B82F6',
     tier: null,
     difficulty: null,
@@ -278,59 +312,6 @@ const additionalRepos = [
 ];
 
 const allRelatedRepos = [...relatedRepos, ...additionalRepos];
-
-/* ------------------------------------------------------------------ */
-/*  Count-up hook                                                     */
-/* ------------------------------------------------------------------ */
-
-function useCountUp(target: number, duration = 1.5, enabled = true) {
-  const [count, setCount] = useState(0);
-  const frameRef = useRef<number>(0);
-
-  useState(() => {
-    if (!enabled) return;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const p = Math.min((now - start) / (duration * 1000), 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setCount(Math.round(eased * target));
-      if (p < 1) frameRef.current = requestAnimationFrame(tick);
-    };
-    frameRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frameRef.current);
-  });
-
-  return count;
-}
-
-/* ------------------------------------------------------------------ */
-/*  Section wrapper with in-view trigger                              */
-/* ------------------------------------------------------------------ */
-
-function SectionReveal({
-  children,
-  className = '',
-  style = {},
-}: {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-15% 0px' });
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      variants={staggerContainer(0.08)}
-      className={className}
-      style={style}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /*  Section 1 — Hero                                                  */
@@ -463,11 +444,9 @@ function HeroSection() {
 
 function BadgeCard({
   badge,
-  index,
   featured,
 }: {
   badge: BadgeData;
-  index: number;
   featured: boolean;
 }) {
   const Icon = badge.icon as React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
@@ -508,7 +487,18 @@ function BadgeCard({
           }}
           whileHover={{ scale: 1.1, transition: { duration: 0.2, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number] } }}
         >
-          <Icon size={32} style={{ color: badge.color }} />
+          <img
+            src={badge.image}
+            alt={`${badge.name} badge`}
+            className="h-16 w-16 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]"
+            loading="lazy"
+            onError={(event) => {
+              event.currentTarget.style.display = 'none';
+              const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
+              if (fallback) fallback.style.display = 'block';
+            }}
+          />
+          <Icon size={32} style={{ color: badge.color, display: 'none' }} />
         </motion.div>
 
         <div className="flex flex-col gap-1">
@@ -641,11 +631,10 @@ function AchievementGallery() {
           animate={inView ? 'visible' : 'hidden'}
           variants={staggerContainer(0.06, 0.2)}
         >
-          {filtered.map((badge, i) => (
+          {filtered.map((badge) => (
             <BadgeCard
               key={badge.name}
               badge={badge}
-              index={i}
               featured={featuredBadges.includes(badge.name)}
             />
           ))}
@@ -704,7 +693,6 @@ function TierProgressionSection() {
           variants={staggerContainer(0.15, 0.2)}
         >
           {tierAchievements.map((ta) => {
-            const Icon = ta.icon as React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
             return (
               <motion.div
                 key={ta.badge}
@@ -726,7 +714,12 @@ function TierProgressionSection() {
                       boxShadow: `0 0 20px ${ta.color}20`,
                     }}
                   >
-                    <Icon size={28} style={{ color: ta.color }} />
+                  <img
+                    src={badges.find((badge) => badge.name === ta.badge)?.image}
+                    alt={`${ta.badge} badge`}
+                    className="h-11 w-11 object-contain"
+                    loading="lazy"
+                  />
                   </div>
                   <div>
                     <div className="font-bold" style={{ color: 'var(--text-primary)' }}>
@@ -757,15 +750,12 @@ function TierProgressionSection() {
                         border: `1px solid ${ta.color}25`,
                       }}
                     >
-                      <div
-                        className="flex h-12 w-12 items-center justify-center rounded-lg text-xs font-bold"
-                        style={{
-                          backgroundColor: `${ta.color}20`,
-                          color: ta.color,
-                        }}
-                      >
-                        {tier.name.charAt(0)}
-                      </div>
+                      <img
+                        src={badges.find((badge) => badge.name === ta.badge)?.tierImages?.[i] || badges.find((badge) => badge.name === ta.badge)?.image}
+                        alt={`${ta.badge} ${tier.name}`}
+                        className="h-14 w-14 object-contain"
+                        loading="lazy"
+                      />
                       <div
                         className="text-xs font-semibold"
                         style={{ color: 'var(--text-primary)' }}
@@ -840,7 +830,6 @@ function AcquisitionGuide() {
         >
           <AccordionPrimitive.Root type="single" collapsible>
             {guideBadges.map((badge) => {
-              const Icon = badge.icon as React.ElementType<{ className?: string; style?: React.CSSProperties; size?: number }>;
               const difficultyColor =
                 badge.difficulty === 'Easy'
                   ? 'var(--accent-emerald)'
@@ -866,7 +855,12 @@ function AcquisitionGuide() {
                         }}
                       >
                         <div className="flex items-center gap-3">
-                          <Icon size={20} style={{ color: badge.color }} />
+                          <img
+                            src={badge.image}
+                            alt=""
+                            className="h-8 w-8 object-contain"
+                            loading="lazy"
+                          />
                           <span>{badge.name}</span>
                           {badge.difficulty && (
                             <span

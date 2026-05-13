@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Trophy, Zap, Heart, Star, GitPullRequest, Lightbulb, Users, Code,
   Rocket, Snowflake, Github, GraduationCap, Shield, Settings, Bot,
-  Crown, Target, Award, Medal, Flame, Sparkles, Gem, Crown as CrownIcon,
-  ArrowLeft, Copy, Check
+  Crown, Target, Award, Flame, Sparkles, Crown as CrownIcon,
+  Copy, Check
 } from 'lucide-react';
 import Layout from '../components/Layout';
 
@@ -13,20 +13,20 @@ import Layout from '../components/Layout';
 /* ------------------------------------------------------------------ */
 
 const achievements = [
-  { id: 'quickdraw', name: 'Quickdraw', icon: Zap, color: '#F59E0B', bg: '#FEF3C7', desc: '5分钟内关闭Issue/PR', rarity: '常见', year: '2022' },
-  { id: 'yolo', name: 'YOLO', icon: Flame, color: '#EF4444', bg: '#FEE2E2', desc: '合并未经审查的PR', rarity: '常见', year: '2022' },
-  { id: 'sponsor', name: 'Public Sponsor', icon: Heart, color: '#EC4899', bg: '#FCE7F3', desc: '通过GitHub Sponsors赞助', rarity: '稀有', year: '2022' },
-  { id: 'starstruck', name: 'Starstruck', icon: Star, color: '#8B5CF6', bg: '#EDE9FE', desc: '仓库获得16+ Stars', rarity: '史诗', year: '2022', tiers: ['x1', 'x2', 'x3', 'x4'] },
-  { id: 'pull-shark', name: 'Pull Shark', icon: GitPullRequest, color: '#06B6D4', bg: '#CFFAFE', desc: '合并Pull Request', rarity: '稀有', year: '2022', tiers: ['x1', 'x2', 'x3', 'x4'] },
-  { id: 'galaxy-brain', name: 'Galaxy Brain', icon: Lightbulb, color: '#10B981', bg: '#D1FAE5', desc: 'Discussion回答被采纳', rarity: '史诗', year: '2022', tiers: ['x1', 'x2', 'x3', 'x4'] },
-  { id: 'pair-extraordinaire', name: 'Pair Extraordinaire', icon: Users, color: '#F97316', bg: '#FFEDD5', desc: '共同作者的PR被合并', rarity: '传说', year: '2022', tiers: ['x1', 'x2', 'x3', 'x4'] },
-  { id: 'heart-sleeve', name: 'Heart On Your Sleeve', icon: Heart, color: '#E11D48', bg: '#FFE4E6', desc: '用❤️回应GitHub内容', rarity: '测试中', year: '2024', beta: true },
-  { id: 'open-sourcerer', name: 'Open Sourcerer', icon: Code, color: '#6366F1', bg: '#E0E7FF', desc: '在多个公共仓库合并PR', rarity: '测试中', year: '2024', beta: true },
+  { id: 'quickdraw', name: 'Quickdraw', icon: Zap, image: './achievement-badges/quickdraw.png', color: '#F59E0B', bg: '#FEF3C7', desc: '5分钟内关闭Issue/PR', rarity: '常见', year: '2022' },
+  { id: 'yolo', name: 'YOLO', icon: Flame, image: './achievement-badges/yolo.png', color: '#EF4444', bg: '#FEE2E2', desc: '合并未经审查的PR', rarity: '常见', year: '2022' },
+  { id: 'sponsor', name: 'Public Sponsor', icon: Heart, image: './achievement-badges/public-sponsor.png', color: '#EC4899', bg: '#FCE7F3', desc: '通过GitHub Sponsors赞助', rarity: '稀有', year: '2022' },
+  { id: 'starstruck', name: 'Starstruck', icon: Star, image: './achievement-badges/starstruck.png', color: '#8B5CF6', bg: '#EDE9FE', desc: '仓库获得16+ Stars', rarity: '史诗', year: '2022', tiers: ['x1', 'x2', 'x3', 'x4'] },
+  { id: 'pull-shark', name: 'Pull Shark', icon: GitPullRequest, image: './achievement-badges/pull-shark.png', color: '#06B6D4', bg: '#CFFAFE', desc: '合并Pull Request', rarity: '稀有', year: '2022', tiers: ['x1', 'x2', 'x3', 'x4'] },
+  { id: 'galaxy-brain', name: 'Galaxy Brain', icon: Lightbulb, image: './achievement-badges/galaxy-brain.png', color: '#10B981', bg: '#D1FAE5', desc: 'Discussion回答被采纳', rarity: '史诗', year: '2022', tiers: ['x1', 'x2', 'x3', 'x4'] },
+  { id: 'pair-extraordinaire', name: 'Pair Extraordinaire', icon: Users, image: './achievement-badges/pair-extraordinaire.png', color: '#F97316', bg: '#FFEDD5', desc: '共同作者的PR被合并', rarity: '传说', year: '2022', tiers: ['x1', 'x2', 'x3', 'x4'] },
+  { id: 'heart-sleeve', name: 'Heart On Your Sleeve', icon: Heart, image: './achievement-badges/heart-on-your-sleeve.png', color: '#E11D48', bg: '#FFE4E6', desc: '用❤️回应GitHub内容', rarity: '测试中', year: '2024', beta: true },
+  { id: 'open-sourcerer', name: 'Open Sourcerer', icon: Code, image: './achievement-badges/open-sourcerer.png', color: '#6366F1', bg: '#E0E7FF', desc: '在多个公共仓库合并PR', rarity: '测试中', year: '2024', beta: true },
 ];
 
 const retired = [
-  { id: 'mars', name: 'Mars 2020', icon: Rocket, color: '#991B1B', bg: '#FECACA', desc: 'NASA火星2020直升机任务', year: '2020', retired: true },
-  { id: 'arctic', name: 'Arctic Code Vault', icon: Snowflake, color: '#1E40AF', bg: '#BFDBFE', desc: '2020北极代码库存档', year: '2020', retired: true },
+  { id: 'mars', name: 'Mars 2020', icon: Rocket, image: './achievement-badges/mars-2020.png', color: '#991B1B', bg: '#FECACA', desc: 'NASA火星2020直升机任务', year: '2020', retired: true },
+  { id: 'arctic', name: 'Arctic Code Vault', icon: Snowflake, image: './achievement-badges/arctic-code-vault.png', color: '#1E40AF', bg: '#BFDBFE', desc: '2020北极代码库存档', year: '2020', retired: true },
 ];
 
 const highlights = [
@@ -67,7 +67,20 @@ const profileTrophies = [
 /*  Components                                                         */
 /* ------------------------------------------------------------------ */
 
-function BadgeCard({ item, index, type = 'achievement' }: { item: any; index: number; type?: string }) {
+interface BadgeWallItem {
+  name: string;
+  icon: React.ElementType<{ size?: number; style?: React.CSSProperties; className?: string }>;
+  color: string;
+  desc: string;
+  image?: string;
+  rarity?: string;
+  beta?: boolean;
+  retired?: boolean;
+  level?: string;
+  tiers?: string[];
+}
+
+function BadgeCard({ item, index, type = 'achievement' }: { item: BadgeWallItem; index: number; type?: string }) {
   const Icon = item.icon;
   const [copied, setCopied] = useState(false);
 
@@ -104,7 +117,20 @@ function BadgeCard({ item, index, type = 'achievement' }: { item: any; index: nu
           className="w-16 h-16 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110"
           style={{ background: `linear-gradient(135deg, ${item.color}20 0%, ${item.color}08 100%)`, boxShadow: `0 4px 20px ${item.color}15` }}
         >
-          <Icon size={28} style={{ color: item.color }} />
+          {'image' in item && item.image ? (
+            <img
+              src={item.image}
+              alt={`${item.name} badge`}
+              className="h-14 w-14 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.35)]"
+              loading="lazy"
+              onError={(event) => {
+                event.currentTarget.style.display = 'none';
+                const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
+                if (fallback) fallback.style.display = 'block';
+              }}
+            />
+          ) : null}
+          <Icon size={28} style={{ color: item.color, display: 'image' in item && item.image ? 'none' : 'block' }} />
         </div>
 
         {/* Name */}
@@ -167,10 +193,17 @@ function BadgeCard({ item, index, type = 'achievement' }: { item: any; index: nu
   );
 }
 
-function FloatingParticle({ color }: { color: string }) {
-  const randomX = Math.random() * 100;
-  const randomDelay = Math.random() * 5;
-  const randomDuration = 3 + Math.random() * 4;
+function seededParticle(index: number) {
+  const seed = Math.sin(index * 999) * 10000;
+  const fraction = seed - Math.floor(seed);
+  return fraction < 0 ? fraction + 1 : fraction;
+}
+
+function FloatingParticle({ color, index }: { color: string; index: number }) {
+  const randomX = seededParticle(index) * 100;
+  const randomDelay = seededParticle(index + 17) * 5;
+  const randomDuration = 3 + seededParticle(index + 31) * 4;
+  const drift = (seededParticle(index + 47) - 0.5) * 100;
 
   return (
     <motion.div
@@ -184,7 +217,7 @@ function FloatingParticle({ color }: { color: string }) {
       animate={{
         y: [0, -800],
         opacity: [0, 0.8, 0],
-        x: [0, (Math.random() - 0.5) * 100],
+        x: [0, drift],
       }}
       transition={{
         duration: randomDuration,
@@ -202,7 +235,6 @@ function FloatingParticle({ color }: { color: string }) {
 
 export default function BadgeWall() {
   const [activeTab, setActiveTab] = useState<'achievements' | 'highlights' | 'certifications' | 'trophies'>('achievements');
-  const [hoveredBadge, setHoveredBadge] = useState<string | null>(null);
 
   const tabs = [
     { id: 'achievements' as const, label: '成就徽章', count: achievements.length + retired.length, color: '#F59E0B' },
@@ -232,7 +264,7 @@ export default function BadgeWall() {
           {/* Floating particles */}
           <div className="absolute inset-0 overflow-hidden">
             {Array.from({ length: 15 }).map((_, i) => (
-              <FloatingParticle key={i} color={['#F59E0B', '#8B5CF6', '#10B981', '#06B6D4', '#EC4899'][i % 5]} />
+              <FloatingParticle key={i} index={i} color={['#F59E0B', '#8B5CF6', '#10B981', '#06B6D4', '#EC4899'][i % 5]} />
             ))}
           </div>
         </div>
@@ -391,13 +423,18 @@ export default function BadgeWall() {
         <div className="flex gap-6 animate-marquee whitespace-nowrap">
           {[...achievements, ...highlights].map((item, i) => {
             const Icon = item.icon;
+            const image = ('image' in item ? item.image : undefined) as string | undefined;
             return (
               <div
                 key={`m-${i}`}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/5"
                 style={{ background: item.color + '08' }}
               >
-                <Icon size={14} style={{ color: item.color }} />
+                {image ? (
+                  <img src={image} alt="" className="h-5 w-5 object-contain" loading="lazy" />
+                ) : (
+                  <Icon size={14} style={{ color: item.color }} />
+                )}
                 <span className="text-xs font-medium text-white/60">{item.name}</span>
               </div>
             );

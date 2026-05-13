@@ -5,7 +5,7 @@ import {
   ChevronRight, ExternalLink, MapPin, Clock, Star, FileText
 } from 'lucide-react';
 import Layout from '../components/Layout';
-import tutorialsData from '../data/tutorials.json';
+import tutorialsData from '../../data/tutorials.json';
 
 const categoryIcons: Record<string, React.ElementType> = {
   BookOpen, Users, Globe, Zap, Shield, Bot, GraduationCap
@@ -322,17 +322,20 @@ function PathsTab() {
               </span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {path.steps.map((step, j) => (
-                <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '12px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 700, color: pathColors[i], minWidth: '50px' }}>{(step as any).day || (step as any).week || (step as any).phase}</span>
-                  <div>
-                    <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{step.topic}</div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
-                      {step.items.join(' / ')}
+              {path.steps.map((step, j) => {
+                const stepLabel = 'day' in step ? step.day : 'week' in step ? step.week : step.phase;
+                return (
+                  <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '12px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 700, color: pathColors[i], minWidth: '50px' }}>{stepLabel}</span>
+                    <div>
+                      <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{step.topic}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                        {step.items.join(' / ')}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         ))}
