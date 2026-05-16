@@ -232,43 +232,48 @@ function TutorialsTab() {
             {categories[activeCategory].name}
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {categories[activeCategory].tutorials.map((t, i) => (
-              <motion.a
-                key={t.name}
-                href={`https://github.com/Harzva/everything-in-github/blob/main/${t.file}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '16px 20px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.05)',
-                  borderRadius: '12px',
-                  color: 'var(--text-primary)',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = categories[activeCategory].color + '40'; e.currentTarget.style.background = categories[activeCategory].color + '08'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
-              >
-                <div>
-                  <div style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '4px' }}>{t.name}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{t.description}</div>
-                  {'source' in t && (
-                    <div style={{ fontSize: '0.7rem', color: categories[activeCategory].color, marginTop: '6px' }}>参考：{t.source}</div>
-                  )}
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ fontSize: '0.7rem', padding: '4px 10px', borderRadius: '20px', background: categories[activeCategory].color + '15', color: categories[activeCategory].color }}>MD</span>
-                  <ExternalLink size={14} style={{ color: 'var(--text-muted)' }} />
-                </div>
-              </motion.a>
-            ))}
+            {categories[activeCategory].tutorials.map((t, i) => {
+              const isInternal = 'route' in t;
+              const href = isInternal ? String(t.route) : `https://github.com/Harzva/everything-in-github/blob/main/${t.file}`;
+
+              return (
+                <motion.a
+                  key={t.name}
+                  href={href}
+                  target={isInternal ? undefined : '_blank'}
+                  rel={isInternal ? undefined : 'noopener noreferrer'}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '16px 20px',
+                    background: isInternal ? categories[activeCategory].color + '10' : 'rgba(255,255,255,0.03)',
+                    border: `1px solid ${isInternal ? categories[activeCategory].color + '35' : 'rgba(255,255,255,0.05)'}`,
+                    borderRadius: '12px',
+                    color: 'var(--text-primary)',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = categories[activeCategory].color + '60'; e.currentTarget.style.background = categories[activeCategory].color + '14'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = isInternal ? categories[activeCategory].color + '35' : 'rgba(255,255,255,0.05)'; e.currentTarget.style.background = isInternal ? categories[activeCategory].color + '10' : 'rgba(255,255,255,0.03)'; }}
+                >
+                  <div>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '4px' }}>{t.name}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{t.description}</div>
+                    {'source' in t && (
+                      <div style={{ fontSize: '0.7rem', color: categories[activeCategory].color, marginTop: '6px' }}>参考：{t.source}</div>
+                    )}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <span style={{ fontSize: '0.7rem', padding: '4px 10px', borderRadius: '20px', background: categories[activeCategory].color + '15', color: categories[activeCategory].color }}>{isInternal ? 'HTML' : 'MD'}</span>
+                    <ExternalLink size={14} style={{ color: 'var(--text-muted)' }} />
+                  </div>
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </div>

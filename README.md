@@ -12,7 +12,8 @@ GitHub 知识地图与开源资源导航：把成就徽章、Profile 美化、Ac
 [在线预览](https://harzva.github.io/everything-in-github/#/) ·
 [徽章墙](https://harzva.github.io/everything-in-github/#/badges) ·
 [成就指南](https://harzva.github.io/everything-in-github/#/achievements) ·
-[教程索引](./tutorials/README.md)
+[教程索引](./tutorials/README.md) ·
+[GitHub Actions 自动化教程](./docs/github-actions-workflows.md)
 
 </div>
 
@@ -30,6 +31,7 @@ Everything in GitHub 是一个面向 GitHub 学习者、开源维护者和 Profi
 | 徽章墙 | GitHub Achievements、Highlights、官方认证、Profile Trophy 展示 | [`#/badges`](https://harzva.github.io/everything-in-github/#/badges) |
 | Profile 美化 | README 生成器、统计卡片、3D 贡献图、奖杯展示 | [`#/profile`](https://harzva.github.io/everything-in-github/#/profile) |
 | Actions 自动化 | CI/CD、Pages 部署、Release、Issue 管理、安全扫描工具 | [`#/actions`](https://harzva.github.io/everything-in-github/#/actions) |
+| Actions 教程 | workflow、repository_dispatch、跨仓库触发、Just-DDL 自动化案例 | [文档入口](./docs/github-actions-workflows.md) |
 | 教程体系 | GitHub 入门、协作、Pages、Actions、安全、Copilot、认证学习路径 | [`#/tutorials`](https://harzva.github.io/everything-in-github/#/tutorials) |
 | 搜索筛选 | 按主题、语言、Star 数筛选 GitHub 生态仓库 | [`#/search`](https://harzva.github.io/everything-in-github/#/search) |
 
@@ -99,11 +101,28 @@ npm run build
 https://harzva.github.io/everything-in-github/#/
 ```
 
+## GitHub Actions 自动化教程
+
+新增系统化 Actions 文档，覆盖 workflow / job / step / action / runner / event、`workflow_dispatch`、`schedule`、`push`、`pull_request`、`repository_dispatch` 的区别，以及跨仓库触发、token 权限、secrets 配置和常见排障。
+
+| 文档 | 内容 |
+| --- | --- |
+| [站内 HTML 教程](https://harzva.github.io/everything-in-github/#/actions-guide) | GitHub Pages 上直接阅读 Actions 与 repository_dispatch 实战教程 |
+| [GitHub Actions 工作流基础](./docs/github-actions-workflows.md) | Actions 核心概念、事件对比、token 与 secrets、排障清单 |
+| [repository_dispatch 跨仓库触发教程](./docs/github-actions-repository-dispatch.md) | 使用 Just-DDL 作为真实案例讲解子仓库通知 Hub 构建部署 |
+| [Git 工作流 Playbook](./docs/git-workflow-playbook.md) | 文档维护、分支、提交、检查和回滚建议 |
+| [Just-DDL 示例模板](./examples/just-ddl-repository-dispatch/README.md) | 可复制的子仓库 `update-data.yml`、Hub `sync-topic-data.yml`、curl 和 gh 调用示例 |
+
 ## 项目结构
 
 ```text
 .
 ├── data/                         # 教程与仓库数据
+├── docs/                         # GitHub Actions、repository_dispatch、Git 工作流文档
+├── examples/
+│   └── just-ddl-repository-dispatch/
+│       ├── topic-update-data.yml # 子专题仓库更新 data/items.json 并通知 Hub
+│       └── hub-sync-topic-data.yml
 ├── public/
 │   ├── achievement-badges/       # 真实 GitHub 成就徽章图片
 │   └── *.jpg / *.png / *.mp4     # 页面视觉资源
@@ -132,6 +151,7 @@ https://harzva.github.io/everything-in-github/#/
 - [`data/repos.json`](./data/repos.json)
 - [`src/data/repos.ts`](./src/data/repos.ts)
 - 对应的 [`topics/`](./topics/) 或 [`tutorials/`](./tutorials/) Markdown 页面
+- 自动化相关文档请同步更新 [`docs/`](./docs/) 与 [`examples/`](./examples/)
 
 <div align="center">
 

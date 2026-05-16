@@ -1,0 +1,55 @@
+name: Sync topic data
+
+on:
+  repository_dispatch:
+    types: [topic-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  sync-build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout hub
+        uses: actions/checkout@v4
+
+      - name: Show dispatch payload
+        run: |
+          echo "event_type=${{ github.event.action }}"
+          echo "topic=${{ github.event.client_payload.topic }}"
+          echo "source_repo=${{ github.event.client_payload.source_repo }}"
+          echo "source_sha=${{ github.event.client_payload.source_sha }}"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync all topic data
+        run: npm run sync:topics
+
+      - name: Build Pages site
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

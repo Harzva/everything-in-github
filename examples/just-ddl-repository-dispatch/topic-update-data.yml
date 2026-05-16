@@ -1,0 +1,61 @@
+name: Update topic data
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: Reason for manual refresh
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout topic repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Just-DDL crawler
+        run: npm run crawl
+
+      - name: Commit data changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(data): update Just-DDL items"
+          file_pattern: data/items.json
+
+      - name: Notify Just-DDL hub
+        env:
+          HUB_DISPATCH_TOKEN: ${{ secrets.HUB_DISPATCH_TOKEN }}
+        run: |
+          test -n "$HUB_DISPATCH_TOKEN"
+          curl -fsSL \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $HUB_DISPATCH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2026-03-10" \
+            https://api.github.com/repos/Just-Agent/just-ddl/dispatches \
+            -d '{
+              "event_type": "topic-updated",
+              "client_payload": {
+                "topic": "ddl",
+                "source_repo": "${{ github.repository }}",
+                "source_sha": "${{ github.sha }}",
+                "data_file": "data/items.json",
+                "run_id": "${{ github.run_id }}"
+              }
+            }'

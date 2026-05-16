@@ -109,8 +109,11 @@
       "icon": "Zap",
       "color": "#F59E0B",
       "tutorials": [
+        {"name": "Actions 自动化专题（站内 HTML）", "route": "#/actions-guide", "description": "workflow、repository_dispatch、token、secrets、Pages 排障与 Just-DDL 案例", "source": "GitHub Docs / Just-DDL"},
         {"name": "首个工作流", "file": "tutorials/actions-advanced/first-workflow.md", "description": "Hello World Actions 与 push 触发", "source": "GitHub Docs"},
         {"name": "CI/CD 实战", "file": "tutorials/actions-advanced/ci-cd-pipeline.md", "description": "自动化安装、测试、构建、部署", "source": "GitHub Docs"},
+        {"name": "repository_dispatch 跨仓库触发", "file": "docs/github-actions-repository-dispatch.md", "description": "跨仓库触发、PAT 权限、Just-DDL Hub 同步与 Pages 部署", "source": "GitHub Docs / Just-DDL"},
+        {"name": "Actions 工作流基础", "file": "docs/github-actions-workflows.md", "description": "workflow、job、step、action、runner、event 与排障", "source": "GitHub Docs"},
         {"name": "常用 Actions 推荐", "file": "topics/actions/README.md", "description": "精选 Actions 工具与使用场景", "source": "GitHub Docs"}
       ]
     },
